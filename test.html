@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สุขภาพดีกับเรา | เว็บออกกำลังกายและโภชนาการ</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #e8f5e9;
+            --accent-color: #4caf50;
+            --text-color: #333;
+            --light-color: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--light-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            background-color: var(--secondary-color);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .feature-card:hover .feature-img img {
+            transform: scale(1.05);
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .food-guide {
+            background-color: var(--secondary-color);
+            padding: 3rem 0;
+        }
+        
+        .food-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .food-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .food-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .food-card h3 i {
+            margin-right: 10px;
+        }
+        
+        .food-card ul {
+            list-style-position: inside;
+        }
+        
+        .food-card ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .exercise-section {
+            margin: 3rem 0;
+        }
+        
+        .exercise-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .exercise-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .exercise-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .exercise-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .exercise-info {
+            padding: 1.5rem;
+        }
+        
+        .exercise-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .exercise-info p {
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--light-color);
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40x40/2e7d32/ffffff?text=HD" alt="สุขภาพดีโลโก้">
+                <h1>สุขภาพดี</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">หน้าแรก</a></li>
+                    <li><a href="#nutrition">โภชนาการ</a></li>
+                    <li><a href="#exercise">ออกกำลังกาย</a></li>
+                    <li><a href="#about">เกี่ยวกับเรา</a></li>
+                    <li><a href="#contact">ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <h2>สุขภาพดีเริ่มต้นที่นี่</h2>
+        <p>แหล่งข้อมูลโภชนาการและท่าออกกำลังกายเพื่อสุขภาพที่ดีของคุณ เรามีคำแนะนำจากผู้เชี่ยวชาญเพื่อช่วยให้คุณมีชีวิตที่มีสุขภาพดีและมีความสุข</p>
+        <a href="#nutrition" class="btn">เริ่มต้นเลย</a>
+    </section>
+    
+    <section class="container" id="nutrition">
+        <h2 class="section-title">โภชนาการเพื่อสุขภาพ</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="อาหารเพื่อสุขภาพ">
+                </div>
+                <div class="feature-content">
+                    <h3>อาหารเพื่อสุขภาพ</h3>
+                    <p>เรียนรู้เกี่ยวกับอาหารที่ดีต่อสุขภาพและมีประโยชน์ต่อร่างกายของคุณ วิธีเลือกวัตถุดิบและวิธีการปรุงอาหารที่ดีต่อสุขภาพ</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1438118907704-7718ee9a191a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ผักและผลไม้">
+                </div>
+                <div class="feature-content">
+                    <h3>ผักและผลไม้</h3>
+                    <p>ประโยชน์ของผักและผลไม้แต่ละชนิด วิตามินและแร่ธาตุที่สำคัญ รวมถึงวิธีรับประทานให้ได้ประโยชน์สูงสุด</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="สูตรอาหารสุขภาพ">
+                </div>
+                <div class="feature-content">
+                    <h3>สูตรอาหารสุขภาพ</h3>
+                    <p>สูตรอาหารเพื่อสุขภาพที่ทำได้ง่ายๆ ที่บ้าน รสชาติอร่อยและดีต่อสุขภาพ เหมาะสำหรับทุกคนในครอบครัว</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="food-guide">
+        <div class="container">
+            <h2 class="section-title">คำแนะนำการกินผัก</h2>
+            <div class="food-categories">
+                <div class="food-card">
+                    <h3><i class="fas fa-leaf"></i> ผักใบเขียว</h3>
+                    <ul>
+                        <li>ผักโขม - อุดมด้วยธาตุเหล็กและแคลเซียม</li>
+                        <li>คะน้า - มีวิตามินเอและซีสูง</li>
+                        <li>ผักกาดหอม - แคลอรี่ต่ำ มีไฟเบอร์สูง</li>
+                        <li>บรอกโคลี - มีสารต้านอนุมูลอิสระสูง</li>
+                    </ul>
+                </div>
+                
+                <div class="food-card">
+                    <h3><i class="fas fa-carrot"></i> ผักสีส้มและเหลือง</h3>
+                    <ul>
+                        <li>แครอท - อุดมด้วยเบต้าแคโรทีน</li>
+                        <li>ฟักทอง - มีวิตามินเอสูง ดีต่อสายตา</li>
+                        <li>พริกหวานเหลือง - มีวิตามินซีสูง</li>
+                        <li>ข้าวโพด - มีไฟเบอร์และสารต้านอนุมูลอิสระ</li>
+                    </ul>
+                </div>
+                
+                <div class="food-card">
+                    <h3><i class="fas fa-pepper-hot"></i> ผักสีแดงและม่วง</h3>
+                    <ul>
+                        <li>มะเขือเทศ - มีไลโคปีนป้องกันมะเร็ง</li>
+                        <li>บีทรูท - ช่วยลดความดันโลหิต</li>
+                        <li>กะหล่ำปลีม่วง - มีสารแอนโทไซยานิน</li>
+                        <li>พริกแดง - มีแคปไซซินช่วยเผาผลาญไขมัน</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container exercise-section" id="exercise">
+        <h2 class="section-title">ท่าออกกำลังกายพื้นฐาน</h2>
+        <div class="exercise-types">
+            <div class="exercise-card">
+                <div class="exercise-img">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ท่าสควอช">
+                </div>
+                <div class="exercise-info">
+                    <h3>สควอช (Squat)</h3>
+                    <p>ท่าออกกำลังกายพื้นฐานสำหรับกล้ามเนื้อขาและสะโพก</p>
+                    <ol>
+                        <li>ยืนแยกขากว้างเท่าช่วงไหล่</li>
+                        <li>ย่อตัวลงเหมือนจะนั่งเก้าอี้ หลังตรง</li>
+                        <li>ย่อจนต้นขาขนานกับพื้น แล้วค่อยลุกขึ้น</li>
+                        <li>ทำ 3 เซต เซตละ 12-15 ครั้ง</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="exercise-card">
+                <div class="exercise-img">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ท่าวิดพื้น">
+                </div>
+                <div class="exercise-info">
+                    <h3>วิดพื้น (Push-up)</h3>
+                    <p>ท่าออกกำลังกายสำหรับกล้ามเนื้อหน้าอกและแขน</p>
+                    <ol>
+                        <li>นอนคว่ำ วางมือกว้างเท่าช่วงไหล่</li>
+                        <li>ดันตัวขึ้นจนแขนตึง หลังตรง</li>
+                        <li>ค่อยๆ ลดตัวลงจนอกเกือบแตะพื้น</li>
+                        <li>ทำ 3 เซต เซตละ 10-12 ครั้ง</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="exercise-card">
+                <div class="exercise-img">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ท่าครันช์">
+                </div>
+                <div class="exercise-info">
+                    <h3>ครันช์ (Crunch)</h3>
+                    <p>ท่าออกกำลังกายสำหรับกล้ามเนื้อหน้าท้อง</p>
+                    <ol>
+                        <li>นอนหงาย งอเข่า วางเท้าราบกับพื้น</li>
+                        <li>วางมือประสานที่ท้ายทอย</li>
+                        <li>ยกศีรษะและไหล่ขึ้นจากพื้น</li>
+                        <li>ทำ 3 เซต เซตละ 15-20 ครั้ง</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <h2>สุขภาพดี</h2>
+            <p>เรามุ่งมั่นที่จะให้ข้อมูลด้านสุขภาพและการออกกำลังกายที่ถูกต้องและมีประโยชน์สำหรับทุกคน</p>
+            
+            <div class="footer-links">
+                <a href="#home">หน้าแรก</a>
+                <a href="#nutrition">โภชนาการ</a>
+                <a href="#exercise">ออกกำลังกาย</a>
+                <a href="#about">เกี่ยวกับเรา</a>
+                <a href="#contact">ติดต่อ</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-line"></i></a>
+            </div>
+            
+            <p>&copy; 2023 สุขภาพดี. สงวนลิขสิทธิ์.</p>
+        </div>
+    </footer>
+</body>
+</html>
